@@ -1,0 +1,57 @@
+#compdef vsm
+
+local cur prev
+cur=${words[CURRENT]}
+prev=${words[CURRENT-1]}
+
+(( $+functions[_vsm_args_comp] )) || 
+_vsm_args_comp() {
+    local -a opt_args
+    if [[ ${prev} == init ]]; then
+        opt_args=(
+            --with_sudo:'<with_sudo>'
+        )
+    elif [[ ${prev} == start ]]; then
+        opt_args=(
+            
+        )
+    elif [[ ${prev} == stop ]]; then
+        opt_args=(
+            
+        )
+    elif [[ ${prev} == restart ]]; then
+        opt_args=(
+            
+        )
+    elif [[ ${prev} == register ]]; then
+        opt_args=(
+            
+        )
+else
+    _arguments -S -s '*:filename:_files'
+    return
+fi
+
+    _describe subcommand opt_args
+}
+
+(( $+functions[_vsm_main] )) || 
+_vsm_main() {
+    local -a args
+    args=(
+        --help:'获取帮助'
+        init:'init'
+        start:'start'
+        stop:'stop'
+        restart:'restart'
+        register:'register'
+    )
+
+    _describe -t common-commands 'common commands' args && _ret=0
+}
+
+if (( ${#words} >= 3 )); then
+    _vsm_args_comp
+else
+    _vsm_main
+fi

@@ -41,6 +41,8 @@ class vsmConfig:
 
     def valid_port(self, port):
         for item in self.config:
+            if item in ['sudo']:
+                continue
             if self.config[item].get('port', -1) == port:
                 return False
         return True
