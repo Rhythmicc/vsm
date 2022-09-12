@@ -72,7 +72,7 @@ def requirePackage(pname: str,
                      if module else f"import {pname}")
             else:
                 QproDefaultConsole.print(
-                    QproInfoString, f'just run again: "{" ".join(sys.argv)}"' if user_lang != 'zh' else f'请重新运行: "{" ".join(sys.argv)}"'
+                    QproInfoString, f'just run again: "{" ".join(sys.argv)}"' if user_lang != 'zh' else f'请重新运行: "{" ".join(sys.argv)}"')
                 exit(0)
         else:
             exit(-1)
