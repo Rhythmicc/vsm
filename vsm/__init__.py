@@ -28,7 +28,7 @@ def external_exec(cmd: str, without_output: bool = False):
     if ret_code and content and not without_output:
         QproDefaultConsole.print(QproErrorString, content)
     elif content and not without_output:
-        QproDefaultConsole.print(QproErrorString, content)
+        QproDefaultConsole.print(QproInfoString, content)
     return ret_code, content
 
 
