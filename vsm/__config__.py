@@ -14,6 +14,7 @@ questions = {
 }
 
 def init_config():
+    QproDefaultConsole.print(QproInfoString, 'Initializing config...' if user_lang != 'zh' else '正在初始化配置...')
     with open(config_path, "w") as f:
         json.dump({i: _ask(questions[i]) for i in questions}, f, indent=4, ensure_ascii=False)
     QproDefaultConsole.print(QproInfoString, f'Config file has been created at: "{config_path}"' if user_lang != 'zh' else f'配置文件已创建于: "{config_path}"')
