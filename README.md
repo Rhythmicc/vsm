@@ -6,6 +6,7 @@ A manager for http service on Server.
 
 ```shell
 pip3 install git+https://github.com/Rhythmicc/vsm.git -U
+pip3 install git+https://gitee.com/RhythmLian/vsm.git -U
 ```
 
 ## Usage
