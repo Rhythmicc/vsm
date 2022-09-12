@@ -36,7 +36,7 @@ def service_check(service: str):
 def start(service: str):
     item = config.select(service)
     with QproDefaultConsole.status(f'[bold green]Starting {service}...' if user_lang != 'zh' else f'[bold green]正在启动 {service}...'):
-        st, ct = external_exec(f'pm2 start http-server --name {service} -- {item["path"]} -p {item["port"]}')
+        st, ct = external_exec(f'pm2 start http-server --name {service} -- {item["path"]} -p {item["port"]}', without_output=True)
     if st != 0:
         QproDefaultConsole.print(QproErrorString, ct)
         return
@@ -47,12 +47,17 @@ def start(service: str):
 @app.command()
 def stop(service: str):
     with QproDefaultConsole.status(f'[bold green]Stopping {service}...' if user_lang != 'zh' else f'[bold green]正在停止 {service}...'):
-        st, ct = external_exec(f'pm2 stop {service}')
+        st, ct = external_exec(f'pm2 stop {service}', without_output=True)
     if st != 0:
         QproDefaultConsole.print(QproErrorString, ct)
         return
     else:
         QproDefaultConsole.print(QproInfoString, f'Stop {service} success' if user_lang != 'zh' else f'停止 {service} 成功')
+
+
+@app.command()
+def status():
+    external_exec(f'pm2 status')
 
 
 @app.command()
