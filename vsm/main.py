@@ -57,7 +57,8 @@ def stop(service: str):
 
 @app.command()
 def status():
-    external_exec(f'pm2 status')
+    _, ct = external_exec(f'pm2 status', without_output=True)
+    QproDefaultConsole.print(ct, justify='center')
 
 
 @app.command()
