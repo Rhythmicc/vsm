@@ -9,7 +9,7 @@ if enable_config:
     config = vsmConfig()
 
 import sys
-from QuickProject import user_pip, _ask
+from QuickProject import user_pip, QproErrorString, _ask
 
 
 def external_exec(cmd: str, without_output: bool = False):
