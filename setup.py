@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
-VERSION = '0.0.3'
+VERSION = '0.0.4'
 
 setup(
     name='vsm',
@@ -23,9 +23,7 @@ setup(
     include_package_data=True,
     zip_safe=True,
     install_requires=['Qpro'],
-    entry_points={
-        'console_scripts': [
-            'vsm = vsm.main:main',
-        ]
-    },
+    entry_points={'console_scripts': [
+        'vsm = vsm.main:main',
+    ]},
 )
