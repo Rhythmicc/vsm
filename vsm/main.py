@@ -43,6 +43,21 @@ def service_check(service: str):
     return True
 
 
+@app.custom_complete("service")
+def start():
+    return [{"name": i, "icon": "🚀"} for i in config.config if i != "sudo"]
+
+
+@app.custom_complete("service")
+def stop():
+    return [{"name": i, "icon": "🛑"} for i in config.config if i != "sudo"]
+
+
+@app.custom_complete("service")
+def restart():
+    return [{"name": i, "icon": "🔄"} for i in config.config if i != "sudo"]
+
+
 @app.command()
 def start(service: str):
     """
